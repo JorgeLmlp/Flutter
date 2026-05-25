@@ -28,7 +28,8 @@ class MyHomePage extends StatelessWidget {
             'Pet',
             'icone Pet',
             'Texto Botao Pet',
-            colors1
+            colors1,
+            mudarPagina: true,
           ),
           MeuCard(
             Icons.power,
@@ -36,7 +37,8 @@ class MyHomePage extends StatelessWidget {
             'icone power',
             'Texto Botao Power',
             colors2
-          )
+          ),
+          MeuCard(Icons.star, "Título", "Descrição", "Abrir Modal", {'primary': Colors.pink}, abrirModal: true)
         ])));
   }
 }
