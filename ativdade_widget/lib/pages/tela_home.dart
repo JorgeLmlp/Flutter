@@ -1,3 +1,4 @@
+import 'package:ativdade_widget/widgets/botao.dart';
 import 'package:flutter/material.dart';
 import '../widgets/my_card.dart';
 
@@ -29,16 +30,16 @@ class MyHomePage extends StatelessWidget {
             'icone Pet',
             'Texto Botao Pet',
             colors1,
-            mudarPagina: true,
           ),
           MeuCard(
-            Icons.power,
-            'power',
-            'icone power',
-            'Texto Botao Power',
-            colors2
+            Icons.gamepad_outlined,
+            'games',
+            'icone games',
+            'Texto Botao games',
+            colors2,
+            tipoBotao: TipoBotao.mudarPagina,
           ),
-          MeuCard(Icons.star, "Título", "Descrição", "Abrir Modal", {'primary': Colors.pink}, abrirModal: true)
+          MeuCard(Icons.star, "Título", "Descrição", "Abrir Modal", {'primary': Colors.pink}, tipoBotao : TipoBotao.modal)
         ])));
   }
 }

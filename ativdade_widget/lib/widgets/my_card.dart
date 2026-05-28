@@ -1,5 +1,4 @@
-import 'package:ativdade_widget/pages/tela_jogos.dart';
-import 'package:ativdade_widget/widgets/botao.dart';
+import 'package:ativdade_widget/widgets/botao.dart'; // Importante para reconhecer o Botao e o TipoBotao
 import 'package:flutter/material.dart';
 
 class MeuCard extends StatelessWidget {
@@ -8,48 +7,17 @@ class MeuCard extends StatelessWidget {
   final String descricao;
   final String textoBotao;
   final Map<String, Color> colors;
-  final bool abrirModal;
-  final bool mudarPagina;
+  final TipoBotao tipoBotao;
 
   const MeuCard(
-      this.icone, this.titulo, this.descricao, this.textoBotao, this.colors,
-      {super.key, this.abrirModal = false, this.mudarPagina = false});
-
-  void _mudarPagina(BuildContext context)
-  {
-    Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => const TelaJogos('telajogos')),
-);
-  }
-  void _mostrarModal(BuildContext context) {
-    showModalBottomSheet(
-      context: context,
-      builder: (context) {
-        return Container(
-          padding: const EdgeInsets.all(20),
-          height: 200,
-          width: double.infinity,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Text(
-                'Modal inferior',
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 8),
-              const Text('Esse modal aparece vindo de baixo.'),
-              const Spacer(),
-              ElevatedButton(
-                onPressed: () => Navigator.pop(context),
-                child: const Text('Fechar'),
-              ),
-            ],
-          ),
-        );
-      },
-    );
-  }
+    this.icone, 
+    this.titulo, 
+    this.descricao, 
+    this.textoBotao, 
+    this.colors, {
+    super.key, 
+    this.tipoBotao = TipoBotao.contador,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +32,7 @@ class MeuCard extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+         
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -86,24 +55,21 @@ class MeuCard extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 12),
-                abrirModal
-                    ? ElevatedButton(
-                        onPressed: () => _mostrarModal(context),
-                        child: Text(textoBotao),
-                      )
-                    : Botao(icone, titulo, descricao, textoBotao,
-                        Colors.transparent),
-                 mudarPagina ?  ElevatedButton (
-                  onPressed:() => _mudarPagina(context),
-                  child: Text(textoBotao),
-
-                 ) : Botao(icone, titulo, descricao, textoBotao,
-                    Colors.transparent),
-
+                
+               
+                Botao(
+                  icone: icone,
+                  titulo: titulo, 
+                  descricao: descricao,
+                  textoBotao: textoBotao,
+                  cor: colors['primary'] ?? Colors.orange, 
+                  tipo: tipoBotao, 
+                ),
               ],
             ),
           ),
           const SizedBox(width: 16),
+
           Icon(
             icone,
             size: 40,

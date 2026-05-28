@@ -15,7 +15,12 @@ class TelaJogos extends StatelessWidget {
                   Text('tela jogos'),
                   Text('essa é a tela jogos'),
                   Text('meus jogos favoritos sao: '),
-                  Text('- Hollow Knight, forza5')
+                  Text('- Hollow Knight, forza5',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.red
+                  ),
+                  )
                 
              ])));
   }
